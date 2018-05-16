@@ -9,8 +9,12 @@ const webpackConfig = {
   entry: {
     index: [
       'react-hot-loader/patch',
-      path.resolve(__dirname, path.resolve(srcPath, 'index.js'))
+      path.resolve(__dirname, path.resolve(srcPath, 'index.jsx'))
     ]
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
 
   output: {
@@ -22,7 +26,7 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         loaders: ['babel-loader', 'eslint-loader'],
         include: path.join(__dirname, srcPath)
