@@ -1,0 +1,149 @@
+$theme-stroke-5: #bbb;
+$theme-stroke-10: #fff;
+$theme-stroke-7: #e5e5e5;
+
+
+$theme-primary-2: #38f;
+$theme-primary-4: #f74;
+
+.pagination {
+  margin: 20px 0;
+  padding-left: 0;
+  line-height: 16px;
+  font-size: 12px;
+  text-align: right;
+
+  .pagination-list {
+    display: inline-block;
+    vertical-align: bottom;
+
+
+    .pager {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+      margin: 0 0 0 5px;
+      border: 1px solid $theme-stroke-5;
+      border-radius: 2px;
+      padding: 6px 8px;
+      min-width: 30px;
+      text-align: center;
+      background: $theme-stroke-10;
+      cursor: pointer;
+      user-select: none;
+
+      &:before,
+      &:after {
+        content: "";
+        display: table;
+      }
+
+      &:after {
+        clear: both;
+      }
+    }
+
+    .pager--current {
+      color: $theme-stroke-10;
+      background: $theme-primary-2;
+      border-color: $theme-primary-2;
+      cursor: default;
+    }
+
+    .pager--disabled {
+      border-color: $theme-stroke-7;
+      cursor: not-allowed;
+      color: $theme-stroke-7;
+    }
+
+    .pager--jump {
+      margin-left: 15px;
+      padding: 0;
+      cursor: default;
+    }
+
+    .pager--omni {
+      margin-left: 0;
+      margin-right: -5px;
+      border: none;
+      cursor: default;
+    }
+
+    .pager__input {
+      box-sizing: border-box;
+      margin: -1px;
+      margin-right: 0;
+      border: 1px solid $theme-stroke-5;
+      border-right-color: $theme-stroke-5;
+      padding: 6px 2px;
+      min-width: 21px;
+      max-width: 40px;
+      height: 30px;
+      text-align: center;
+      font-weight: normal;
+      outline: none;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+
+      &:focus {
+        border-color: $theme-primary-2;
+        box-shadow: 0 0 1px $theme-primary-4;
+      }
+    }
+
+    .pager__suffix {
+      padding: 7px 5px;
+      background: $theme-stroke-7;
+    }
+  }
+
+  .pagination__info {
+    display: inline-block;
+    line-height: 30px;
+
+    .select {
+      width: 60px;
+    }
+  }
+}
+
+
+.pagination-inline {
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 12px;
+  text-align: center;
+  user-select: none;
+
+  .pagination-list {
+    display: inline-block;
+    padding: 6px 0;
+
+    .pager {
+      display: inline-block;
+      margin: 0 4px;
+      line-height: 26px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .pager--current {
+      color: #00a1d6;
+      font-weight: 700;
+    }
+
+    .pager--disabled {
+      cursor: not-allowed;
+    }
+
+    .prevOrNext:hover {
+      color: #00a1d6;
+    }
+  }
+
+  .pagination__info {
+    display: inline-block;
+    line-height: 26px;
+  }
+}
