@@ -9,7 +9,7 @@ class Item extends React.Component {
   }
 
   componentDidMount() {
-    const { limit, total } = this.props.obj;
+    const { limit, total } = this.props;
     if (Math.ceil(total / limit) > 1) {
       this.pagination = new Pagination({
         _current: 1,
@@ -22,13 +22,14 @@ class Item extends React.Component {
 
   componentDidUpdate(prevProps) {
     console.log('enter', this.paginationList);
-    const { total, limit } = this.props.obj;
+    const { total, limit } = this.props;
 
-    if (this.paginationList && Math.ceil(total / limit) > 1 && Math.ceil(total / limit) !== Math.ceil(prevProps.obj.total / prevProps.obj.limit)) {
+    if (this.paginationList && Math.ceil(total / limit) > 1 && Math.ceil(total / limit) !== Math.ceil(prevProps.total / prevProps.limit)) {
       console.log('enter l2');
       if (this.pagination) {
         console.log('enter l31');
         this.pagination.resetState({
+          _current: 1,
           _total: Math.ceil(total / limit),
         });
       } else {
@@ -48,7 +49,7 @@ class Item extends React.Component {
   }
 
   render() {
-    const { total, limit } = this.props.obj;
+    const { total, limit } = this.props;
 
     return (
       <div className='item-wrap' style={{ width: '600px' }}>
@@ -100,7 +101,7 @@ class App extends React.Component {
   }
 
   render() {
-    // const { totol, limit } = this.state;
+    const { total, limit } = this.state;
 
     return (
       <div>
@@ -108,7 +109,7 @@ class App extends React.Component {
         <button onClick={ () => this.handleClick(1) }>Button1</button>
         <button onClick={ () => this.handleClick(2) }>Button2</button>
 
-        <Item obj={ this.state } />
+        <Item limit={ limit } total={ total } />
       </div>
     );
   }
