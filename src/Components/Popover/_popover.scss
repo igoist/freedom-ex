@@ -1,0 +1,66 @@
+.popover-hidden {
+  visibility: hidden;
+}
+
+.popover {
+  position: absolute;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  z-index: 1030;
+  cursor: auto;
+  font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  list-style: none;
+  text-align: left;
+  user-select: text;
+  white-space: normal;
+
+  .popover-arrow {
+    // content: " ";
+    // position: absolute;
+    // left: 50%;
+    // bottom: -6px;
+    // margin-left: -5px;
+    // display: block;
+    // width: 0;
+    // height: 0;
+    // border-color: transparent;
+    // border-style: solid;
+    // border-bottom-width: 0;
+    // border-width: 5px;
+    // border-top-color: rgba(217, 217, 217, 0.7);
+
+    background: #fff;
+    width: 7.07106781px;
+    height: 7.07106781px;
+    transform: rotate(45deg);
+    position: absolute;
+    display: block;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  .popover-inner {
+    padding: 0 16px;
+    line-height: 32px;
+    min-width: 177px;
+    text-align: center;
+    height: 32px;
+    background-clip: padding-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.popover-placement-bottom {
+  padding-top: 9px;
+
+  .popover-arrow {
+    top: 6px;
+    left: 50%;
+    box-shadow: -1px -1px 4px rgba(0,0,0,.06);
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
