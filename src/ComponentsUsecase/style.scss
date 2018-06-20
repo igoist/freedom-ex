@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:after, :before {
+  box-sizing: border-box;
+}
+
 .btn-group {
   margin-top: 50px;
   margin-left: 50px;
@@ -28,3 +32,4 @@
 @import '../Components/Popover/_popover';
 // @import './Modal01/Animation';
 // @import './Modal01/Modal';
+@import './Modal02/Modal';

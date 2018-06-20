@@ -6,6 +6,8 @@ const publicPath = '/';
 const srcPath = './src';
 
 const webpackConfig = {
+  devtool: 'source-map',
+
   entry: {
     index: [
       'react-hot-loader/patch',
@@ -44,8 +46,8 @@ const webpackConfig = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-         NODE_ENV: JSON.stringify('production')
-       }
+        NODE_ENV: JSON.stringify('production')
+      }
     })
   ],
   devServer: {
