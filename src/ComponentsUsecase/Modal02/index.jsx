@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from './Modal';
+import Modal from '../../Components/Modal';
 import '../style.css';
 let confirm = Modal.confirm;
 
