@@ -10,6 +10,7 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
+    document.body.style.overflow = 'hidden';
     let handleIn = () => {
       this.mask.classList.remove('fade-appear');
       this.mask.classList.remove('fade-appear-active');
@@ -20,7 +21,6 @@ class Modal extends React.Component {
 
     this.mask.classList.add('fade-appear');
     this.mask.classList.add('fade-appear-active');
-
   }
 
   handleOK() {
@@ -43,6 +43,7 @@ class Modal extends React.Component {
       this.mask.classList.remove('fade-leave');
       this.mask.classList.remove('fade-leave-active');
 
+      document.body.style.overflow = null;
       this.mask.removeEventListener('animationend', handleOut);
 
       close();
