@@ -5,12 +5,11 @@ import {
   Link
 } from 'react-router-dom';
 
-// import App from './UpdateTest/App';
-import App2 from './ComponentsUsecase/App';
-import App from './ComponentsUsecase/Modal02/';
-import AppTooltip from './ComponentsUsecase/Tooltip/';
-import AppEditor from './ComponentsUsecase/Editor01/';
-import AppTest from './UpdateTest/App';
+import App2 from './usecase/App';
+import App from './usecase/Modal02/';
+import AppTooltip from './usecase/Tooltip/';
+import AppEditor from './usecase/Editor01/';
+import AppTest from './updateTest/App';
 
 const currentUrl = '/';
 

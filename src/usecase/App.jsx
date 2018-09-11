@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
-import Popover from '../Components/Popover';
-// import Popover from '../Components/Popover/index.js';
+// import Popover from '../components/Popover';
+import Popover from '../components/Popover/index.js';
 
 
 class App extends React.Component {
@@ -28,26 +28,26 @@ class App extends React.Component {
         target: target === prevState.target ? null : target
       };
     });
-    // new Popover({
-    //   target
-    // });
+    new Popover({
+      target
+    });
   }
 
   render() {
-    const { target } = this.state;
+    // const { target } = this.state;
 
     return (
       <div>
-        <div class="btn-group">
-          <button class='btn' onClick={ this.handleClick }>A</button>
-          <button class='btn' onClick={ this.handleClick }>B</button>
-          <button class='btn' onClick={ this.handleClick }>C</button>
+        <div className='btn-group'>
+          <button className='btn' onClick={ this.handleClick }>A</button>
+          <button className='btn' onClick={ this.handleClick }>B</button>
+          <button className='btn' onClick={ this.handleClick }>C</button>
         </div>
 
-        {
+        {/* {
           target &&
           <Popover target={ target } />
-        }
+        } */}
       </div>
     );
   }

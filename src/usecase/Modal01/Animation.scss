@@ -1,24 +1,17 @@
 
 .fade-appear,.fade-enter,.fade-leave {
-  -webkit-animation-duration: .2s;
   animation-duration: .2s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused
 }
 
 .fade-appear.fade-appear-active,.fade-enter.fade-enter-active {
-  -webkit-animation-name: antFadeIn;
   animation-name: antFadeIn;
-  -webkit-animation-play-state: running;
   animation-play-state: running
 }
 
 .fade-leave.fade-leave-active {
-  -webkit-animation-name: antFadeOut;
   animation-name: antFadeOut;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
   pointer-events: none
 }
@@ -28,7 +21,6 @@
 }
 
 .fade-appear,.fade-enter,.fade-leave {
-  -webkit-animation-timing-function: linear;
   animation-timing-function: linear
 }
 
@@ -54,113 +46,80 @@
 
 ///
 .zoom-appear,.zoom-enter,.zoom-leave {
-  -webkit-animation-duration: .2s;
   animation-duration: .2s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused
 }
 
 .zoom-appear.zoom-appear-active,.zoom-enter.zoom-enter-active {
-  -webkit-animation-name: antZoomIn;
   animation-name: antZoomIn;
-  -webkit-animation-play-state: running;
   animation-play-state: running
 }
 
 .zoom-leave.zoom-leave-active {
-  -webkit-animation-name: antZoomOut;
   animation-name: antZoomOut;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
   pointer-events: none
 }
 
 .zoom-appear,.zoom-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
   transform: scale(0);
-  -webkit-animation-timing-function: cubic-bezier(.08,.82,.17,1);
   animation-timing-function: cubic-bezier(.08,.82,.17,1)
 }
 
 .zoom-leave {
-  -webkit-animation-timing-function: cubic-bezier(.78,.14,.15,.86);
   animation-timing-function: cubic-bezier(.78,.14,.15,.86)
 }
 
 .zoom-big-appear,.zoom-big-enter,.zoom-big-leave {
-  -webkit-animation-duration: .2s;
   animation-duration: .2s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused
 }
 
 .zoom-big-appear.zoom-big-appear-active,.zoom-big-enter.zoom-big-enter-active {
-  -webkit-animation-name: antZoomBigIn;
   animation-name: antZoomBigIn;
-  -webkit-animation-play-state: running;
   animation-play-state: running
 }
 
 .zoom-big-leave.zoom-big-leave-active {
-  -webkit-animation-name: antZoomBigOut;
   animation-name: antZoomBigOut;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
   pointer-events: none
 }
 
 .zoom-big-appear,.zoom-big-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
   transform: scale(0);
-  -webkit-animation-timing-function: cubic-bezier(.08,.82,.17,1);
   animation-timing-function: cubic-bezier(.08,.82,.17,1)
 }
 
 .zoom-big-leave {
-  -webkit-animation-timing-function: cubic-bezier(.78,.14,.15,.86);
   animation-timing-function: cubic-bezier(.78,.14,.15,.86)
 }
 
 .zoom-big-fast-appear,.zoom-big-fast-enter,.zoom-big-fast-leave {
-  -webkit-animation-duration: .1s;
   animation-duration: .1s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused
 }
 
 .zoom-big-fast-appear.zoom-big-fast-appear-active,.zoom-big-fast-enter.zoom-big-fast-enter-active {
-  -webkit-animation-name: antZoomBigIn;
   animation-name: antZoomBigIn;
-  -webkit-animation-play-state: running;
   animation-play-state: running
 }
 
 .zoom-big-fast-leave.zoom-big-fast-leave-active {
-  -webkit-animation-name: antZoomBigOut;
   animation-name: antZoomBigOut;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
   pointer-events: none
 }
 
 .zoom-big-fast-appear,.zoom-big-fast-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
   transform: scale(0);
-  -webkit-animation-timing-function: cubic-bezier(.08,.82,.17,1);
   animation-timing-function: cubic-bezier(.08,.82,.17,1)
 }
 
 .zoom-big-fast-leave {
-  -webkit-animation-timing-function: cubic-bezier(.78,.14,.15,.86);
   animation-timing-function: cubic-bezier(.78,.14,.15,.86)
 }
 
