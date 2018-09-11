@@ -1,5 +1,11 @@
 @import '~antd/dist/antd.css';
 
+
+@import 'Components/Notification/_notification';
+@import 'Components/Pagination/_pagination';
+
 body {
   margin: 40px;
 }
+
+@import '../public/sass/layout/_navigator';

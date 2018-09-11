@@ -1,39 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './UpdateTest/App';
-import App2 from './ComponentsUsecase/App';
-import App from './ComponentsUsecase/Modal02/';
 import { AppContainer } from 'react-hot-loader';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link
+  BrowserRouter as Router
 } from 'react-router-dom';
+
+import { Menu, Routes } from './router';
+
+const handleMenuBtnClick = () => {
+  document.body.classList.toggle('nav-opened');
+};
 
 ReactDOM.render(
   <AppContainer>
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to={'/'}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to={'/b'}>
-              Rendering with React
-            </Link>
-          </li>
-          <li>
-            <Link to={'/c'}>
-              Components
-            </Link>
-          </li>
-        </ul>
-        <Route exact path="/" component={App} />
-        <Route path="/b" component={App2} />
-        <Route path="/c" component={App} />
+        <Menu />
+        <a className='menuBtn' onClick={ handleMenuBtnClick }>
+          <del className='bar'></del>
+          <del className='bar'></del>
+          <del className='bar'></del>
+        </a>
+        <Routes />
       </div>
     </Router>
   </AppContainer>,
