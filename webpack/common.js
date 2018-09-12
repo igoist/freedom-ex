@@ -1,6 +1,4 @@
-/* eslint: disable */
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const publicPath = '/';
@@ -11,8 +9,7 @@ const webpackConfig = {
 
   entry: {
     index: [
-      'react-hot-loader/patch',
-      path.resolve(__dirname, path.resolve(srcPath, 'index.jsx'))
+      path.resolve(path.resolve(__dirname, '..'), path.resolve(srcPath, 'index.jsx'))
     ]
   },
 
@@ -22,7 +19,7 @@ const webpackConfig = {
 
   output: {
     filename: '[name].bundle.min.js',
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(path.resolve(__dirname, '..'), 'dist/'),
     publicPath
   },
 
@@ -32,7 +29,7 @@ const webpackConfig = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         loaders: ['babel-loader', 'eslint-loader'],
-        include: path.join(__dirname, srcPath)
+        include: path.join(path.resolve(__dirname, '..'), srcPath)
       },
       {
         test: /\.css$/,
@@ -43,21 +40,9 @@ const webpackConfig = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html')
-    }),
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify('production')
-    //   }
-    // })
-  ],
-  devServer: {
-    contentBase: './dist',
-    port: 3004,
-    publicPath: '/',
-    inline: true,
-    hotOnly: true
-  },
+      template: path.resolve(path.resolve(__dirname, '..'), './public/index.html')
+    })
+  ]
 };
 
 module.exports = webpackConfig;
