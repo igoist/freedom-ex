@@ -1,6 +1,9 @@
 import React from 'react';
 import Modal from '../../components/Modal';
 import '../style.css';
+import { log } from '../../util/';
+
+const { l } = log;
 let confirm = Modal.confirm;
 
 function showDeleteConfirm() {
@@ -11,10 +14,18 @@ function showDeleteConfirm() {
     // okType: 'danger',
     cancelText: '取消',
     onOk() {
-      console.log('OK');
+      l({
+        title: 'Pagination',
+        text: 'OK',
+        textColor: 'green',
+      });
     },
     onCancel() {
-      console.log('Cancel');
+      l({
+        title: 'Pagination',
+        text: 'Cancel',
+        textColor: 'green',
+      });
     },
   });
 }

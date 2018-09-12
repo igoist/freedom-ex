@@ -1,7 +1,9 @@
 import React from 'react';
 import Pagination from '../Components/Pagination';
 import '../App.css';
+import { log } from '../util/';
 
+const { l } = log;
 
 class Item extends React.Component {
   constructor(props) {
@@ -21,19 +23,35 @@ class Item extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('enter', this.paginationList);
+    l({
+      title: 'Pagination',
+      text: 'test',
+      textColor: 'green',
+    });
     const { total, limit } = this.props;
 
     if (this.paginationList && Math.ceil(total / limit) > 1 && Math.ceil(total / limit) !== Math.ceil(prevProps.total / prevProps.limit)) {
-      console.log('enter l2');
+      l({
+        title: 'Pagination',
+        text: 'enter l2',
+        textColor: 'green',
+      });
       if (this.pagination) {
-        console.log('enter l31');
+        l({
+          title: 'Pagination',
+          text: 'enter l31',
+          textColor: 'green',
+        });
         this.pagination.resetState({
           _current: 1,
           _total: Math.ceil(total / limit),
         });
       } else {
-        console.log('enter l32');
+        l({
+          title: 'Pagination',
+          text: 'enter l32',
+          textColor: 'green',
+        });
         this.pagination = new Pagination({
           _current: 1,
           _total: Math.ceil(total / limit),
