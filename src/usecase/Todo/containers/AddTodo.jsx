@@ -1,9 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
+import { log } from '../../../util';
 
-const AddTodo = ({ dispatch }) => {
+const { dev } = log;
+
+const AddTodo = (state) => {
   let input;
+
+  const { dispatch } = state;
+  console.log(state);
+
+  dev({
+    title: 'Todo',
+    text: 'container AddTodo dispatch -- ' + typeof (dispatch),
+    textColor: 'green'
+  });
 
   return (
     <div>
