@@ -10,6 +10,7 @@ import App from './usecase/Modal02/';
 import AppTooltip from './usecase/Tooltip/';
 import AppEditor from './usecase/Editor01/';
 import AppTest from './updateTest/App';
+import AppTodo from './usecase/Todo';
 
 const currentUrl = '/';
 
@@ -38,7 +39,12 @@ const routerArr = [
     path: currentUrl + 'editor',
     title: 'Test: Editor',
     component: AppEditor
-  }
+  },
+  {
+    path: currentUrl + 'todo',
+    title: 'App: Todo',
+    component: AppTodo
+  },
 ];
 
 export default class Menu extends React.Component {
