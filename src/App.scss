@@ -9,3 +9,13 @@ body {
 }
 
 @import '../public/sass/layout/_navigator';
+
+
+// for react-router-transition
+.route-wrapper {
+  position: relative;
+}
+
+.route-wrapper > div {
+  position: absolute;
+}
