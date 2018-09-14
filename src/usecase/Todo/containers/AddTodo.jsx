@@ -5,11 +5,8 @@ import { log } from '../../../util';
 
 const { dev } = log;
 
-const AddTodo = (state) => {
+const AddTodo = ({ dispatch }) => {
   let input;
-
-  const { dispatch } = state;
-  console.log(state);
 
   dev({
     title: 'Todo',

@@ -6,3 +6,8 @@ export default combineReducers({
   todos,
   visibilityFilter
 });
+
+export {
+  todos,
+  visibilityFilter
+};

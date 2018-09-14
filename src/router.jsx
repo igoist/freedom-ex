@@ -10,8 +10,9 @@ import App from './usecase/Modal02/';
 import AppTooltip from './usecase/Tooltip/';
 import AppEditor from './usecase/Editor01/';
 import AppTest from './updateTest/App';
-// import AppTodo from './usecase/Todo';
+import AppTodo from './usecase/Todo';
 import AppCounter from './usecase/Counter';
+import AppConnect from './usecase/Connect';
 
 const currentUrl = '/';
 
@@ -41,15 +42,20 @@ const routerArr = [
     title: 'Test: Editor',
     component: AppEditor
   },
-  // {
-  //   path: currentUrl + 'todo',
-  //   title: 'App: Todo',
-  //   component: AppTodo
-  // },
+  {
+    path: currentUrl + 'todo',
+    title: 'App: Todo',
+    component: AppTodo
+  },
   {
     path: currentUrl + 'counter',
     title: 'App: Counter',
     component: AppCounter
+  },
+  {
+    path: currentUrl + 'connect',
+    title: 'App: Connect',
+    component: AppConnect
   },
 ];
 
