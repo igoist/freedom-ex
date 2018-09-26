@@ -1,4 +1,3 @@
-
 import App2 from './usecase/App';
 import App from './usecase/Modal02/';
 import AppTooltip from './usecase/Tooltip/';
@@ -7,6 +6,7 @@ import AppTest from './updateTest/App';
 import AppTodo from './usecase/Todo';
 import AppCounter from './usecase/Counter';
 import AppConnect from './usecase/Connect';
+import AppUpload from './usecase/Upload';
 
 const currentUrl = '/';
 
@@ -51,6 +51,11 @@ const routerArr = [
     path: currentUrl + 'connect',
     title: 'App: Connect',
     component: AppConnect
+  },
+  {
+    path: currentUrl + 'upload',
+    title: 'App: Upload',
+    component: AppUpload
   },
 ];
 
