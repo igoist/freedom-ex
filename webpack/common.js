@@ -5,10 +5,9 @@ const publicPath = '/';
 const srcPath = './src';
 
 const webpackConfig = {
-  devtool: 'source-map',
-
   entry: {
     index: [
+      'react-hot-loader/patch',
       path.resolve(path.resolve(__dirname, '..'), path.resolve(srcPath, 'index.jsx'))
     ]
   },
