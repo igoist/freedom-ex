@@ -56,7 +56,7 @@ const routerArr = [
   {
     path: currentUrl + 'antdDemo',
     title: 'App: AntdDemo',
-    component: AppAntdDemo
+    component: AppAntdDemo,
   },
   {
     path: currentUrl + 'upload',
