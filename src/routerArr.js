@@ -6,6 +6,7 @@ import AppTest from './updateTest/App';
 import AppTodo from './usecase/Todo';
 import AppCounter from './usecase/Counter';
 import AppConnect from './usecase/Connect';
+import AppAntdDemo from './usecase/AntdDemo';
 import AppUpload from './usecase/Upload';
 
 const currentUrl = '/';
@@ -51,6 +52,11 @@ const routerArr = [
     path: currentUrl + 'connect',
     title: 'App: Connect',
     component: AppConnect
+  },
+  {
+    path: currentUrl + 'antdDemo',
+    title: 'App: AntdDemo',
+    component: AppAntdDemo
   },
   {
     path: currentUrl + 'upload',
