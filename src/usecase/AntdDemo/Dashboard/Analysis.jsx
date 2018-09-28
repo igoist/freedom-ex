@@ -1,6 +1,60 @@
 import React from 'react';
 
-// Analysis.js
-export default () => {
-  return <h1>Analysis Page</h1>;
-};
+import { Card, Button } from 'antd';
+
+export default class CardsPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.counter = 100;
+    this.state = {
+      cardList: [
+        {
+          id: 1,
+          setup: 'Did you hear about the two silk worms in a race?',
+          punchline: 'It ended in a tie',
+        },
+        {
+          id: 2,
+          setup: 'What happens to a frog\'s car when it breaks down?',
+          punchline: 'It gets toad away',
+        },
+      ],
+    };
+    this.addNewCard = this.addNewCard.bind(this);
+  }
+
+  addNewCard() {
+    this.setState(prevState => {
+      this.counter += 1;
+      const card = {
+        id: this.counter,
+        setup: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+        punchline: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      };
+
+      return {
+        cardList: [...prevState.cardList, card]
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.cardList.map(card => (
+            <Card key={ card.id }>
+              <div>Q: { card.setup }</div>
+              <div>
+                <strong>A: { card.punchline }</strong>
+              </div>
+            </Card>
+          ))
+        }
+        <div>
+          <Button onClick={ this.addNewCard }> 添加卡片 </Button>
+        </div>
+      </div>
+    );
+  }
+}
