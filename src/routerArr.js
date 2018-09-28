@@ -19,37 +19,44 @@ const routerArr = [
     path: currentUrl,
     title: 'Component: Pagination',
     component: AppTest,
-    exact: true
+    exact: true,
+    icon: 'ellipsis'
   },
   {
     path: currentUrl + 'popover',
     title: 'Component: Popover',
-    component: App2
+    component: App2,
+    icon: 'message'
   },
   {
     path: currentUrl + 'modal',
     title: 'Component: Modal',
-    component: App
+    component: App,
+    icon: 'folder'
   },
   {
     path: currentUrl + 'tooltip',
     title: 'Component: Tooltip',
-    component: AppTooltip
+    component: AppTooltip,
+    icon: 'tool'
   },
   {
     path: currentUrl + 'editor',
     title: 'Test: Editor',
-    component: AppEditor
+    component: AppEditor,
+    icon: 'edit'
   },
   {
     path: currentUrl + 'todo',
     title: 'App: Todo',
-    component: AppTodo
+    component: AppTodo,
+    icon: 'bars'
   },
   {
     path: currentUrl + 'counter',
     title: 'App: Counter',
-    component: AppCounter
+    component: AppCounter,
+    icon: 'calculator'
   },
   {
     path: currentUrl + 'connect',
@@ -70,16 +77,19 @@ const routerArr = [
         path: currentUrl + 'dashboard/analysis',
         title: 'App: analysis',
         component: AppAnalysis,
+        icon: 'share-alt'
       },
       {
         path: currentUrl + 'dashboard/monitor',
         title: 'App: monitor',
         component: AppMonitor,
+        icon: 'star'
       },
       {
         path: currentUrl + 'dashboard/workplace',
         title: 'App: workplace',
         component: AppWorkplace,
+        icon: 'to-top'
       },
     ],
     exact: true
@@ -87,7 +97,8 @@ const routerArr = [
   {
     path: currentUrl + 'upload',
     title: 'App: Upload',
-    component: AppUpload
+    component: AppUpload,
+    icon: 'upload'
   },
 ];
 

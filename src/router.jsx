@@ -7,6 +7,9 @@ import routerArr from './routerArr';
 
 import { Menu, Icon } from 'antd';
 
+
+const defaultIconName = 'tags-o';
+
 class MenuNew extends React.Component {
   render() {
     let rows = [];
@@ -18,17 +21,15 @@ class MenuNew extends React.Component {
         rows.push(
           <Menu.SubMenu
             key='sub1'
-            title={<span><Icon type='dashboard' /><span>Dashboard</span></span>}
+            title={<span><Icon type={ item.icon ? item.icon : defaultIconName } /><span>Dashboard</span></span>}
           >
             {
               item.routes.map((ii, index) => (
-                <Menu.Item key={ i.toString() + '-' + index.toString() }>
-                  <Icon type='pie-chart' />
-                  <span>
-                    <Link to={ ii.path }>
-                      { ii.title }
-                    </Link>
-                  </span>
+                <Menu.Item key={ i.toString() + '-' + index.toString() } title={ ii.title }>
+                  <Link to={ ii.path }>
+                    <Icon type={ ii.icon ? ii.icon : defaultIconName } />
+                    <span>{ ii.title }</span>
+                  </Link>
                 </Menu.Item>
               ))
             }
@@ -38,12 +39,10 @@ class MenuNew extends React.Component {
       } else {
         rows.push(
           <Menu.Item key={ i.toString() }>
-            <Icon type='pie-chart' />
-            <span>
-              <Link to={ item.path }>
-                { item.title }
-              </Link>
-            </span>
+            <Link to={ item.path }>
+              <Icon type={ item.icon ? item.icon : defaultIconName } />
+              <span>{ item.title }</span>
+            </Link>
           </Menu.Item>
         );
       }
