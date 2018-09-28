@@ -121,22 +121,17 @@ class Routes extends React.Component {
     for (let i = 0; i < routerArr.length; i++) {
       let item = routerArr[i];
       if (item.routes) {
-        if (item.exact) {
-          rows.push(<Route key={ i.toString() } exact path={ item.path } component={ item.component } />);
-        } else {
-          rows.push(<Route key={ i.toString() } path={ item.path } component={ item.component } />);
-        }
+        rows.push(<Route key={ i.toString() } exact={ item.exact ? true : false } path={ item.path } component={ item.component } />);
         item.routes.map((ii, index) => (
           rows.push(<Route key={ i.toString() + '-' + index.toString() } path={ ii.path } component={ ii.component } />)
         ));
       } else {
-        if (item.exact) {
-          rows.push(<Route key={ i.toString() } exact path={ item.path } component={ item.component } />);
-        } else {
-          rows.push(<Route key={ i.toString() } path={ item.path } component={ item.component } />);
-        }
+        rows.push(<Route key={ i.toString() } exact={ item.exact ? true : false } path={ item.path } component={ item.component } />);
       }
     }
+
+    // 404 page
+    // rows.push(<Route component={ NoMatch }/>);
 
     return (
       <AnimatedSwitch
