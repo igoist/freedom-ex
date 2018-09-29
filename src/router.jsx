@@ -21,7 +21,7 @@ class MenuNew extends React.Component {
         rows.push(
           <Menu.SubMenu
             key='sub1'
-            title={<span><Icon type={ item.icon ? item.icon : defaultIconName } /><span>Dashboard</span></span>}
+            title={<span><Icon type={ item.icon ? item.icon : defaultIconName } /><span>{ item.title }</span></span>}
           >
             {
               item.routes.map((ii, index) => (

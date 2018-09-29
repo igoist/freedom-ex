@@ -1,75 +1,187 @@
 import React from 'react';
+import Loading from './Loading';
+
+class Card extends React.Component {
+  render() {
+    const { fileName, src } = this.props;
+
+    return (
+      <div className="ant-upload-list-item ant-upload-list-item-done">
+        <div className="ant-upload-list-item-info">
+          <span>
+            <a className="ant-upload-list-item-thumbnail" href="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" target="_blank" rel="noopener noreferrer">
+              <img src={ src } alt={ fileName } />
+            </a>
+            <a href={ src } target="_blank" rel="noopener noreferrer" className="ant-upload-list-item-name" title={ fileName }>{ fileName }</a>
+          </span>
+        </div>
+        <span className="ant-upload-list-item-actions">
+          <a href={ src } target="_blank" rel="noopener noreferrer" title="Preview file">
+            <i className="anticon anticon-eye-o"></i>
+          </a>
+          <i title="Remove file" className="anticon anticon-delete"></i>
+        </span>
+      </div>
+    );
+  }
+}
+
 
 class Upload extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+      fileList: [{
+        src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        fileName: 'test.png'
+      }, {
+        src: 'https://hbimg.b0.upaiyun.com/f7938d66bd896ef98d3854a7cf234db529f0f87acfa9d-yqxRs7_sq140sf',
+        fileName: 'test.png'
+      }],
+      isLoading: true
+    };
+  }
+
+  componentDidMount() {
+    let pp = this.pp;
+    let input = this.input;
+    input.addEventListener('change', (e) => {
+      console.log(e);
+      console.log(input.files[0]);
+
+      let file = input.files[0];
+
+      let reader = new FileReader();
+
+      reader.onloadstart = function() {
+        console.log('onloadstart');
+      };
+
+      reader.onprogress = function(p) {
+        pp.textContent = p.loaded / p.total;
+        console.log('onprogress: ', pp.textContent);
+      };
+
+      reader.onload = function() {
+        console.log('load complete');
+      };
+
+      reader.onloadend = function() {
+        if (reader.error) {
+          console.log(reader.error);
+        } else {
+          console.log('load end');
+        }
+      };
+
+      // reader.readAsBinaryString(file);
+      reader.readAsDataURL(file);
+    });
   }
 
   handleUpload() {
     let file = this.input.files[0];
-    // let pp = this.pp;
-    // console.log(file);
+    let pp = this.pp;
+    console.log(file);
 
-    // let reader = new FileReader();
+    let reader = new FileReader();
 
-    // reader.onloadstart = function() {
-    //   // 这个事件在读取开始时触发
-    //   console.log('onloadstart');
-    //   // document.getElementById("bytesTotal").textContent = file.size;
-    // };
-
-    // reader.onprogress = function(p) {
-    //   // 这个事件在读取进行中定时触发
-    //   console.log('onprogress');
-    //   // document.getElementById('bytesRead').textContent = p.loaded;
-    //   // pp.textContent = p.loaded;
-    //   console.log(pp, p);
-    //   // console.log(document.getElementById('ppp'));
-    // };
-
-    // reader.onload = function() {
-    //   // 这个事件在读取成功结束后触发
-    //   console.log('load complete');
-    // };
-
-    // reader.onloadend = function() {
-    //   // 这个事件在读取结束后，无论成功或者失败都会触发
-    //   if (reader.error) {
-    //     console.log(reader.error);
-    //   } else {
-    //     console.log('load end');
-    //     // console.log(reader.result);
-    //   }
-    // };
-
-    // // reader.readAsBinaryString(file);
-    // reader.readAsDataURL(file);
-
-    let fd = new FormData();
-    fd.append('file', file);
-
-    const init = {
-      method: 'POST',
-      body: fd,
-      // credentials: 'include'
+    reader.onloadstart = function() {
+      // 这个事件在读取开始时触发
+      console.log('onloadstart');
+      // document.getElementById('bytesTotal').textContent = file.size;
     };
 
-    fetch('http://localhost:3005/api/upload', init)
-      .then(r => r.json())
-      .then(r => console.log(r))
-    ;
+    reader.onprogress = function(p) {
+      // 这个事件在读取进行中定时触发
+      console.log('onprogress');
+      // document.getElementById('bytesRead').textContent = p.loaded;
+      pp.textContent = p.loaded / p.total;
+      console.log('onprogress: ', pp.textContent);
+      // console.log(document.getElementById('ppp'));
+    };
+
+    reader.onload = function() {
+      // 这个事件在读取成功结束后触发
+      console.log('load complete');
+    };
+
+    reader.onloadend = function() {
+      // 这个事件在读取结束后，无论成功或者失败都会触发
+      if (reader.error) {
+        console.log(reader.error);
+      } else {
+        console.log('load end');
+        // console.log(reader.result);
+      }
+    };
+
+    // reader.readAsBinaryString(file);
+    reader.readAsDataURL(file);
+
+    // let fd = new FormData();
+    // fd.append('file', file);
+
+    // const init = {
+    //   method: 'POST',
+    //   body: fd,
+    //   // credentials: 'include'
+    // };
+
+    // fetch('http://localhost:3005/api/upload', init)
+    //   .then(r => r.json())
+    //   .then(r => console.log(r))
+    // ;
+  }
+
+  handleClick() {
+    this.input.click();
   }
 
   render() {
+    const uploadBtn = (
+      <div onClick={ this.handleClick }>
+        <i className='anticon anticon-plus' style={{ color: '#999', fontSize: '32px' }}></i>
+        <div className='ant-upload-text' style={{ color: '#666', userSelect: 'none' }}>Upload</div>
+      </div>
+    );
+
     return (
-      <div>
-        <h1>Mr. Meeseeks</h1>
-        <h1>Mr. Meeseeks</h1>
-        <h1>Mr. Meeseeks</h1>
-        <input type='file' ref={ el => this.input = el } />
+      <div className='clearfix'>
+        <div className='ant-upload-list ant-upload-list-picture-card'>
+          {
+            this.state.fileList.map((file, index) => (
+              <Card
+                key={ index.toString() }
+                src={ file.src }
+                fileName={ file.fileName }
+              />
+            ))
+          }
+
+          {
+            this.state.isLoading && (
+              <Loading />
+            )
+          }
+        </div>
+
+        <div className='ant-upload ant-upload-select ant-upload-select-picture-card' style={{ width: '128px', height: '128px' }}>
+          <span className='ant-upload' role='button'>
+            <input type='file' accept='' style={{ display: 'none' }} ref={ el => this.input = el } />
+            { uploadBtn }
+          </span>
+        </div>
+
         <button onClick={ this.handleUpload }>Upload</button>
         <p id='ppp' ref={ el => this.pp = el }>0.0</p>
+
+        <h1>Mr. Meeseeks</h1>
+        <h1>Mr. Meeseeks</h1>
+        <h1 onClick={ () => this.setState({ isLoading: !this.state.isLoading })}>Mr. Meeseeks</h1>
       </div>
     );
   }
