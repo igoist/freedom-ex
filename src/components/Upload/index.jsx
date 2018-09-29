@@ -32,6 +32,7 @@ class Upload extends React.Component {
     super(props);
     this.handleUpload = this.handleUpload.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleState = this.handleState.bind(this);
 
     this.state = {
       fileList: [{
@@ -41,45 +42,21 @@ class Upload extends React.Component {
         src: 'https://hbimg.b0.upaiyun.com/f7938d66bd896ef98d3854a7cf234db529f0f87acfa9d-yqxRs7_sq140sf',
         fileName: 'test.png'
       }],
-      isLoading: true
+      isLoading: false,
     };
   }
 
+
   componentDidMount() {
-    let pp = this.pp;
-    let input = this.input;
-    input.addEventListener('change', (e) => {
-      console.log(e);
-      console.log(input.files[0]);
-
-      let file = input.files[0];
-
-      let reader = new FileReader();
-
-      reader.onloadstart = function() {
-        console.log('onloadstart');
-      };
-
-      reader.onprogress = function(p) {
-        pp.textContent = p.loaded / p.total;
-        console.log('onprogress: ', pp.textContent);
-      };
-
-      reader.onload = function() {
-        console.log('load complete');
-      };
-
-      reader.onloadend = function() {
-        if (reader.error) {
-          console.log(reader.error);
-        } else {
-          console.log('load end');
-        }
-      };
-
-      // reader.readAsBinaryString(file);
-      reader.readAsDataURL(file);
+    this.input.addEventListener('change', () => {
+      this.setState({
+        isLoading: true
+      });
     });
+  }
+
+  handleState(obj) {
+    this.setState(obj);
   }
 
   handleUpload() {
@@ -142,6 +119,7 @@ class Upload extends React.Component {
   }
 
   render() {
+    const { fileList, isLoading } = this.state;
     const uploadBtn = (
       <div onClick={ this.handleClick }>
         <i className='anticon anticon-plus' style={{ color: '#999', fontSize: '32px' }}></i>
@@ -153,7 +131,7 @@ class Upload extends React.Component {
       <div className='clearfix'>
         <div className='ant-upload-list ant-upload-list-picture-card'>
           {
-            this.state.fileList.map((file, index) => (
+            fileList.map((file, index) => (
               <Card
                 key={ index.toString() }
                 src={ file.src }
@@ -163,8 +141,12 @@ class Upload extends React.Component {
           }
 
           {
-            this.state.isLoading && (
-              <Loading />
+            isLoading && (
+              <Loading
+                file={ this.input.files[0] }
+                fileList={ fileList }
+                handleUploadState={ this.handleState }
+              />
             )
           }
         </div>

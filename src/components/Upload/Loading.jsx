@@ -6,16 +6,55 @@ class Loading extends React.Component {
   }
 
   componentDidMount() {
+    const { file, fileList, handleUploadState } = this.props;
+    console.log(handleUploadState);
+    let progress = this.progress;
 
+    let reader = new FileReader();
+
+    // reader.onloadstart = function() {
+    //   console.log('onloadstart');
+    // };
+
+    reader.onprogress = function(p) {
+      progress.style.width = (p.loaded / p.total) * 100 + '%';
+    };
+
+    // reader.onload = function() {
+    //   console.log('load complete');
+    // };
+
+    reader.onloadend = function() {
+      if (reader.error) {
+        console.log(reader.error);
+      } else {
+        // console.log('load end');
+        // console.log(reader.result);
+        fileList.push({
+          src: reader.result,
+          fileName: file.name
+        });
+        setTimeout(() => {
+          handleUploadState({
+            fileList,
+            isLoading: false
+          });
+        }, 400);
+      }
+    };
+
+    reader.readAsDataURL(file);
   }
 
   render() {
+    const { file } = this.props;
+    // console.log(file);
     return (
       <div className='ant-upload-list-item ant-upload-list-item-uploading'>
         <div className='ant-upload-list-item-info'>
           <span>
             <div className='ant-upload-list-item-uploading-text'>Uploading...</div>
-            <span className='ant-upload-list-item-name' title='Huaban-0.1.0-mac.zip'>Huaban-0.1.0-mac.zip</span>
+            <span className='ant-upload-list-item-name' title={ file.name }>{ file.name }</span>
           </span>
         </div>
         <i title='Remove file' className='anticon anticon-cross'></i>
@@ -24,7 +63,7 @@ class Loading extends React.Component {
             <div>
               <div className='ant-progress-outer'>
                 <div className='ant-progress-inner'>
-                  <div className='ant-progress-bg' style={{ width: '97.2358%', height: '2px' }}></div>
+                  <div className='ant-progress-bg' style={{ width: '0%', height: '2px' }} ref={ el => this.progress = el }></div>
                 </div>
               </div>
             </div>
