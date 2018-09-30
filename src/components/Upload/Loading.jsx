@@ -7,7 +7,6 @@ class Loading extends React.Component {
 
   componentDidMount() {
     const { file, fileList, handleUploadState } = this.props;
-    console.log(handleUploadState);
     let progress = this.progress;
 
     let reader = new FileReader();
@@ -31,6 +30,7 @@ class Loading extends React.Component {
         // console.log('load end');
         // console.log(reader.result);
         fileList.push({
+          id: fileList.length > 0 ? fileList[fileList.length - 1].id + 1 : 0,
           src: reader.result,
           fileName: file.name
         });

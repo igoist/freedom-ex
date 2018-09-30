@@ -3,23 +3,28 @@ import Loading from './Loading';
 
 class Card extends React.Component {
   render() {
-    const { fileName, src } = this.props;
+    const { file, dispatch } = this.props;
+    const { id, fileName, src } = file;
 
     return (
-      <div className="ant-upload-list-item ant-upload-list-item-done">
-        <div className="ant-upload-list-item-info">
+      <div className='ant-upload-list-item ant-upload-list-item-done'>
+        <div className='ant-upload-list-item-info'>
           <span>
-            <a className="ant-upload-list-item-thumbnail" href="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" target="_blank" rel="noopener noreferrer">
+            <a className='ant-upload-list-item-thumbnail' href='https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' target='_blank' rel='noopener noreferrer'>
               <img src={ src } alt={ fileName } />
             </a>
-            <a href={ src } target="_blank" rel="noopener noreferrer" className="ant-upload-list-item-name" title={ fileName }>{ fileName }</a>
+            <a href={ src } target='_blank' rel='noopener noreferrer' className='ant-upload-list-item-name' title={ fileName }>{ fileName }</a>
           </span>
         </div>
-        <span className="ant-upload-list-item-actions">
-          <a href={ src } target="_blank" rel="noopener noreferrer" title="Preview file">
-            <i className="anticon anticon-eye-o"></i>
+        <span className='ant-upload-list-item-actions'>
+          <a href={ src } target='_blank' rel='noopener noreferrer' title='Preview file'>
+            <i className='anticon anticon-eye-o'></i>
           </a>
-          <i title="Remove file" className="anticon anticon-delete"></i>
+          <i
+            className='anticon anticon-delete'
+            title='Remove file'
+            onClick={ () => dispatch({ type: 'delete', id })}
+          ></i>
         </span>
       </div>
     );
@@ -33,19 +38,21 @@ class Upload extends React.Component {
     this.handleUpload = this.handleUpload.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleState = this.handleState.bind(this);
+    this.mockDispatch = this.mockDispatch.bind(this);
 
     this.state = {
       fileList: [{
-        src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        fileName: 'test.png'
+        id: 0,
+        fileName: 'test.png',
+        src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
       }, {
-        src: 'https://hbimg.b0.upaiyun.com/f7938d66bd896ef98d3854a7cf234db529f0f87acfa9d-yqxRs7_sq140sf',
-        fileName: 'test.png'
+        id: 1,
+        fileName: 'test.png',
+        src: 'https://hbimg.b0.upaiyun.com/f7938d66bd896ef98d3854a7cf234db529f0f87acfa9d-yqxRs7_sq140sf'
       }],
       isLoading: false,
     };
   }
-
 
   componentDidMount() {
     this.input.addEventListener('change', () => {
@@ -118,6 +125,20 @@ class Upload extends React.Component {
     this.input.click();
   }
 
+  mockDispatch(action) {
+    let state = this.state;
+    let { fileList } = state;
+    switch (action.type) {
+      case 'delete':
+        fileList = fileList.filter(file => file.id !== action.id);
+        break;
+    }
+    // console.log(fileList);
+    this.setState({
+      fileList
+    });
+  }
+
   render() {
     const { fileList, isLoading } = this.state;
     const uploadBtn = (
@@ -134,8 +155,8 @@ class Upload extends React.Component {
             fileList.map((file, index) => (
               <Card
                 key={ index.toString() }
-                src={ file.src }
-                fileName={ file.fileName }
+                file={ file }
+                dispatch={ this.mockDispatch }
               />
             ))
           }
