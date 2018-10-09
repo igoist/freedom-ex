@@ -50,6 +50,7 @@ class Upload extends React.Component {
         src: 'https://hbimg.b0.upaiyun.com/f7938d66bd896ef98d3854a7cf234db529f0f87acfa9d-yqxRs7_sq140sf'
       }],
       isLoading: false,
+      preparedFile: null
     };
   }
 
@@ -57,8 +58,11 @@ class Upload extends React.Component {
     let input = this.input;
     input.addEventListener('change', () => {
       if (input.files.length) {
+        const file = input.files[0];
+        input.value = '';
         this.setState({
-          isLoading: true
+          isLoading: true,
+          preparedFile: file
         });
       }
     });
@@ -87,7 +91,7 @@ class Upload extends React.Component {
   }
 
   render() {
-    const { fileList, isLoading } = this.state;
+    const { fileList, isLoading, preparedFile } = this.state;
     const uploadBtn = (
       <div>
         <i className='anticon anticon-plus' style={{ color: '#999', fontSize: '32px' }}></i>
@@ -111,7 +115,7 @@ class Upload extends React.Component {
           {
             isLoading && (
               <Loading
-                file={ this.input.files[0] }
+                file={ preparedFile }
                 fileList={ fileList }
                 handleUploadState={ this.handleState }
               />
