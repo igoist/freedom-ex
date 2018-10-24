@@ -4,6 +4,7 @@ import AppTooltip from './usecase/Tooltip/';
 import AppEditor from './usecase/Editor01/';
 import AppTest from './updateTest/App';
 import AppTodo from './usecase/Todo';
+import AppTodo2 from './usecase/Todo2';
 import AppCounter from './usecase/Counter';
 import AppConnect from './usecase/Connect';
 import AppAntdDemo from './usecase/AntdDemo';
@@ -50,6 +51,12 @@ const routerArr = [
     path: currentUrl + 'todo',
     title: 'App: Todo',
     component: AppTodo,
+    icon: 'bars'
+  },
+  {
+    path: currentUrl + 'todo2',
+    title: 'App: Todo2',
+    component: AppTodo2,
     icon: 'bars'
   },
   {
