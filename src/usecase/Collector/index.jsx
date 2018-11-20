@@ -1,32 +1,28 @@
 import React from 'react';
 import './style.css';
+import path from 'path';
 
+const perPage = 18;
+
+const handleUrl = url => {
+  return `/img/bilibili/${ path.basename(url) }`;
+};
 
 class Page extends React.Component {
   render() {
+    const { page } = this.props;
+
     return (
       <div className='page' style={{ zIndex: this.props.id }} data-id={ this.props.id }>
         <div className='front item-box'>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
+          {
+            page.slice(0, 9).map((item, i) => <div key={ i.toString() } className='item' style={{ backgroundImage: `url(${ handleUrl(item.cover) })` }}>{ item.media_id }</div>)
+          }
         </div>
         <div className='back item-box'>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
-          <div className='item'></div>
+          {
+            page.slice(9, 18).map((item, i) => <div key={ i.toString() } className='item' style={{ backgroundImage: `url(${ handleUrl(item.cover) })` }}>{ item.media_id }</div>)
+          }
         </div>
       </div>
     );
@@ -35,6 +31,14 @@ class Page extends React.Component {
 
 
 class Collector extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      arr: []
+    };
+  }
+
+
   componentDidMount() {
     let handleToggle = target => {
       if (target.classList.contains('flip')) {
@@ -58,16 +62,40 @@ class Collector extends React.Component {
         handleToggle(e.target.parentNode.parentNode);
       }
     });
+
+    this.loadMap();
+  }
+
+
+  loadMap() {
+    let xhr = new XMLHttpRequest();
+    xhr.overrideMimeType('application/json');
+    xhr.open('GET', '/map/bilibili.json');
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const res = JSON.parse(xhr.response);
+        let arr = [];
+        for (let i = 0; i < Math.ceil(res.length / perPage); i++) {
+          arr.push(res.slice(i * perPage, (i + 1) * perPage));
+        }
+        this.setState(() => ({ arr }));
+        // console.log(res);
+        console.log(arr);
+      }
+    };
+    xhr.send();
   }
 
   render() {
+    const { arr } = this.state;
+    console.log(arr);
     return (
       <div>
-        <h1>Collector</h1>
+        {/* <h1>Collector</h1> */}
         <div className='book'>
           {
-            [1, 2, 3, 4 ,5].map((item, index) => {
-              return <Page key={ index.toString() } id={ 5 - index } />;
+            arr.map((item, index) => {
+              return <Page key={ index.toString() } id={ arr.length - index } page={ item } />;
             })
           }
         </div>

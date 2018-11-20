@@ -35,12 +35,12 @@ ReactDOM.render(
           <Layout>
             <Header style={{ background: '#fff', textAlign: 'center', padding: 0 }}>Header</Header>
             <Content style={{ margin: '24px 16px 0' }}>
-              <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+              <div style={{ padding: 24, background: '#fff', minHeight: 560 }}>
                 <Routes />
               </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-              Ant Design ©2018 Created Rick and Morty
+              Ant Design ©2018 Created By Rick and Morty
             </Footer>
           </Layout>
         </Layout>
