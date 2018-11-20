@@ -12,6 +12,7 @@ import AppAnalysis from './usecase/AntdDemo/Dashboard/Analysis';
 import AppMonitor from './usecase/AntdDemo/Dashboard/Monitor';
 import AppWorkplace from './usecase/AntdDemo/Dashboard/Workplace';
 import AppUpload from './usecase/Upload';
+import AppCollector from './usecase/Collector';
 
 const currentUrl = '/';
 
@@ -106,6 +107,12 @@ const routerArr = [
     title: 'App: Upload',
     component: AppUpload,
     icon: 'upload'
+  },
+  {
+    path: currentUrl + 'collector',
+    title: 'App: Collector',
+    component: AppCollector,
+    // icon: ''
   },
 ];
 
